@@ -22,13 +22,13 @@ contract InteractionsTest is Test {
         vm.deal(USER, STARTING_BALANCE);
     }
 
-    function testUserCanFundInteractions() public {
+    function testUserCanFundAndOwnerWithdraw() public {
         FundFundMe fundFundMe = new FundFundMe();
         fundFundMe.fundFundMe(address(fundMe));
 
         WithdrawFundMe withdrawFundMe = new WithdrawFundMe();
         withdrawFundMe.withdrawFundMe(address(fundMe));
 
-        assertEq(address(fundMe).balance, 0);
+        assert(address(fundMe).balance == 0);
     }
 }
